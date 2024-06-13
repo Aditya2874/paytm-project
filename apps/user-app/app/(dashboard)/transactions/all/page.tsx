@@ -1,5 +1,5 @@
 import { Card } from "@repo/ui/card";
-import getOnRampTransactions from "../../lib/actions/getOnRampTransaction";
+import getOnRampTransactions from "../../../lib/actions/getOnRampTransaction";
 
 export default async function () {
     const transactions = await getOnRampTransactions();
