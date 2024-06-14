@@ -8,7 +8,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
@@ -22,5 +21,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "chart.js": "^4.4.3",
+    "react-chartjs-2": "^5.2.0"
+  }
 }
