@@ -18,3 +18,12 @@ export async function getp2p(){
         toUser : t.toUserId
     }))
 }
+export async function getUserData() {
+    const session = await getServerSession(authOptions);
+    const data = await prisma.user.findUnique({
+        where: {
+            id : Number(session?.user?.id)
+        }
+    });
+    return data;
+}

@@ -7,14 +7,14 @@ export default function Layout({
 }): JSX.Element {
     return (
         <div className="w-full">
-            <div className="text-4xl text-[#6a51a6] pt-8 mb-5 font-bold">
+            <div className="text-4xl text-[#6a51a6] p-8 mb-2 font-bold">
                 Transactions
             </div>
-            <div className="mb-4 flex items-center gap-x-4">
+            <div className="pl-8 mb-4 flex items-center gap-x-4">
                 <SidebarItem href={"/transactions/all"} title={"All"} icon={<AllIcon />}></SidebarItem>
                 <SidebarItem href={"/transactions/p2pT"} title={"P2P"} icon={<P2PTransferIcon />}></SidebarItem>
             </div>
-            <div>
+            <div className="px-8">
                 {children}
             </div>
         </div>
