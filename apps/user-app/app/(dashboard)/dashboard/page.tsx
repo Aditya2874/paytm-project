@@ -5,34 +5,24 @@ import { getp2p, getUserData } from "../../lib/actions/p2pmoney";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../lib/auth";
 import UserInfoCard from "../../../components/UserInfoCard";
+import React from "react";
 
-let chartData = {
+
+const change = (s: number, e: number) => ({
     labels: ['Total'],
     datasets: [
         {
             label: 'Spending',
-            data: [0],
+            data: [s / 100],
             backgroundColor: 'rgba(75, 192, 192, 0.6)',
         },
+        {
+            label: 'Earning',
+            data: [e / 100],
+            backgroundColor: 'rgba(153, 102, 255, 0.6)',
+        },
     ],
-};
-function change(s: number, e: number) {
-    chartData = {
-        labels: ['Total'],
-        datasets: [
-            {
-                label: 'Spending',
-                data: [s / 100],
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
-            },
-            {
-                label: 'Earning',
-                data: [e / 100],
-                backgroundColor: 'rgba(153, 102, 255, 0.6)',
-            },
-        ],
-    };
-}
+});
 export default async function () {
     const session = await getServerSession(authOptions);
     const balance = await getBalance();
@@ -46,10 +36,10 @@ export default async function () {
         else
             earn += t.amount;
     });
-    change(spend, earn);
+    const chartData = change(spend,earn);
     return <div className="w-full p-5">
         <div className="flex justify-center text-4xl text-[#6a51a6] pt-8 font-bold">
-            Welcome to PAYTM - Online Money Transfer Service
+            Welcome to QuickTrans - Online Money Transfer Service
         </div>
         <div className="flex justify-evenly mt-8 text-xl">
             <Card title="Total Balance"><div className="mt-4 text-[#6a51a6]">Rs {balance.amount / 100}</div></Card>

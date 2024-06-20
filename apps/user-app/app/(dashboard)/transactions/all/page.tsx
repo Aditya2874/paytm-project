@@ -8,7 +8,7 @@ export default async function () {
             
         <Card title="All Transactions" >
         <div className="pt-2 pr-2">
-            {transactions.map(t => <div className="flex justify-between">
+            {transactions.map(t => <div key={t.id} className="flex justify-between">
                 <div>
                     <div className="">
                         Received INR
